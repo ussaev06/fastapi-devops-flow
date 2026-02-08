@@ -23,9 +23,7 @@ jobs:
           pip install httpx  # нужен для тестов
 
       - name: Run Tests
-        run: |
-          # Простейший тест: запуск и проверка статуса
-          python -m pytest -c "from fastapi.testclient import TestClient; from main import app; client = TestClient(app); response = client.get('/'); assert response.status_code == 200"
+          run: pytest test_main.py
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
