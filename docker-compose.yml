@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    # Замените 'ваш_логин' на реальный логин Docker Hub
+    image: ussaev/fastapi-app:latest
+    container_name: fastapi_prod
+    ports:
+      - "80:8000"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
