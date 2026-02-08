@@ -34,7 +34,7 @@ jobs:
 
 
 
-     - name: Login to Harbor
+      - name: Login to Harbor
         uses: docker/login-action@v2
         with:
           registry: ${{ secrets.HARBOR_URL }}
@@ -44,12 +44,12 @@ jobs:
 
 
 
-    - name: Build and Push to Harbor
-       uses: docker/build-push-action@v4
-       with:
-         context: .
-         push: true
-         tags: |
+      - name: Build and Push to Harbor
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
            ${{ secrets.HARBOR_URL }}/library/fastapi-app:v${{ github.run_number }}
            ${{ secrets.HARBOR_URL }}/library/fastapi-app:latest
 
